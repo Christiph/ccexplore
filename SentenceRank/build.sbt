@@ -1,18 +1,36 @@
-mainClass in (Compile, packageBin) := Some("com.kunyan.sentencesimilarity.Word2Vec")
-
-name := "sentancesimilarity"
+name := "SentenceRank"
 
 version := "1.0"
 
 scalaVersion := "2.10.4"
 
-resolvers += "Kunyan Repo" at "http://61.147.114.67:8081/nexus/content/groups/public/"
+resolvers += "Kunyan Repo" at "http://222.73.34.92:8081/nexus/content/groups/public/"
 
-libraryDependencies += "com.kunyan" % "nlpsuit-package" % "0.2.9.0"
+libraryDependencies += "com.kunyan" % "nlpsuit-package" % "0.2.8.7"
 
-libraryDependencies += "org.apache.spark" % "spark-core_2.10" % "1.5.2"
+libraryDependencies += "com.kunyan" % "pinyin4j" % "2.5.0"
+
+libraryDependencies += "com.kunyan" % "rank" % "1.0"
+
+libraryDependencies += "com.kunyan" % "louvain" % "0.1.0"
 
 libraryDependencies += "org.apache.spark" % "spark-mllib_2.10" % "1.5.2"
+
+libraryDependencies += "org.json" % "json" % "20160212"
+
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.38"
+
+libraryDependencies += "com.ibm.icu" % "icu4j" % "56.1"
+
+libraryDependencies += "org.ansj" % "ansj_seg" % "0.9"
+
+libraryDependencies += "redis.clients" % "jedis" % "2.8.0"
+
+libraryDependencies += "org.scalactic" %% "scalactic" % "2.2.5" % "test"
+
+libraryDependencies += "org.apache.spark" % "spark-graphx_2.10" % "1.5.2" excludeAll ExclusionRule(organization = "javax.servlet")
+
+libraryDependencies += "org.graphstream" % "gs-core" % "1.1.2" excludeAll ExclusionRule(organization = "javax.servlet")
 
 assemblyMergeStrategy in assembly := {
   case PathList("org", "codehaus", xs @ _*) => MergeStrategy.last
@@ -36,6 +54,5 @@ assemblyMergeStrategy in assembly := {
     val oldStrategy = (assemblyMergeStrategy in assembly).value
     oldStrategy(x)
 }
-
 
     
